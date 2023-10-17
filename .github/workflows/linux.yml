@@ -46,7 +46,7 @@ jobs:
       if: success() || failure()
     - run: | 
             mkdir -p reports
-            pytest  tests --html=reports/reports.html
+            pytest tests --browser webkit --browser firefox --html=reports/reports.html
             chmod 777  reports/reports.html
 
     - name: Set output
