@@ -50,13 +50,22 @@ jobs:
             pytest tests --browser webkit --browser firefox --html=reports/reports.html
             chmod 777  reports/reports.html
 
-    - name: Set output
-      if: success() || failure()
-      id: results
-      run: echo "artifactPath=reports/reports.html" >> $GITHUB_OUTPUT
+    #- name: Set output
+    #  if: success() || failure()
+    #  id: results
+    #  run: echo "artifactPath=reports/reports.html" >> $GITHUB_OUTPUT
 
-    - uses: actions/upload-artifact@v3
+    #- uses: actions/upload-artifact@v3
+    #  if: success() || failure()
+    #  with:
+    #    name: test-report
+    #    path: ${{ steps.results.outputs.artifactPath }}
+
+    - name: Upload Results
+      uses: actions/upload-artifact@v3
       if: success() || failure()
       with:
-        name: test-report
-        path: ${{ steps.results.outputs.artifactPath }}
+        name: Reports
+        path: reports/**
+        if-no-files-found: error
+        retention-days: 30

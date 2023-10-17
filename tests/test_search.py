@@ -4,7 +4,7 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 
 def test_login(playwright: Playwright):
     browser = playwright.chromium.launch(headless=True, slow_mo=500)
-    context = browser.new_context(record_video_dir="videos/")
+    context = browser.new_context(record_video_dir="reports/videos/")
     page = context.new_page()
     page.goto("https://www.saucedemo.com/")
 
