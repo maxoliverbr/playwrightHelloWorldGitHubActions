@@ -10,3 +10,4 @@ def test_login(playwright: Playwright):
 
     # Make sure to close, so that videos are saved.
     context.close()
+    browser.close()
